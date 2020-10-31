@@ -13,6 +13,11 @@ html body {
   font-family: chalkTastic;
 }
 
+.mainHead {
+  transform: rotate(-20deg);
+  margin-top: 100px;
+}
+
 .game {
   min-height: 400px;
 }
@@ -43,7 +48,7 @@ html body {
 
 .square {
   text-align: center;
-  font-size: 95px;
+  font-size: 50px;
 }
 
 .square:nth-child(1),
