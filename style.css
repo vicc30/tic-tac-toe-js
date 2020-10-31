@@ -13,6 +13,61 @@ html body {
   font-family: chalkTastic;
 }
 
+.game {
+  min-height: 400px;
+}
+
 .card {
   background: none !important;
+  width: 18rem;
+}
+
+.card-title {
+  color: yellow;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.board {
+  width: 300px;
+  height: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 1px;
+  -ms-transform: rotate(-20deg); /* IE 9 */
+  transform: rotate(-20deg);
+}
+
+.square {
+  text-align: center;
+  font-size: 95px;
+}
+
+.square:nth-child(1),
+.square:nth-child(2),
+.square:nth-child(4),
+.square:nth-child(5),
+.square:nth-child(7),
+.square:nth-child(8) {
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+  border-right: 3px dashed yellow;
+}
+
+.square:nth-child(1),
+.square:nth-child(2),
+.square:nth-child(3),
+.square:nth-child(4),
+.square:nth-child(5),
+.square:nth-child(6) {
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border-bottom-right-radius: 225px 15px;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom: 3px dashed yellow;
 }
