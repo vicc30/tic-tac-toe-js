@@ -76,3 +76,12 @@ html body {
   border-bottom-left-radius: 15px 255px;
   border-bottom: 3px dashed yellow;
 }
+
+.selection {
+  background: none;
+  color: white;
+}
+
+.selected {
+  color: yellow;
+}

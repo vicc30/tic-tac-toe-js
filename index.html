@@ -13,20 +13,31 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col col-12">
+            <div class="col col-12 mb-sm-5 mb-md-0 ml-sm-4 ml-md-0">
                 <h1 class="text-center mainHead">Tic Tac Toe Game!</h1>
             </div>
         </div>
         <div class="row align-items-center game">
-            <div class="col col-sm-4">
+            <div class="col col-sm-5">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Instructions</h4>
-                        <p class="card-text">Select</p>
+                        <p class="card-text">Start game o select a player:</p>
+                        <div class="row">
+                            <button id="X" class="selection" type="button" onclick="gameBoard.selected('X')">
+                                X First
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button id="O" class="selection" type="button" onclick="gameBoard.selected('O')">
+                                O First
+                            </button>
+                        </div>
+                        <h4 id="nextMove"></h4>
                     </div>
                 </div>
             </div>
-            <div class="col col-sm-6 d-flex justify-content-center">
+            <div class="col col-sm-5 d-flex justify-content-center">
                 <div id="board" class="board "></div>
             </div>
         </div>
