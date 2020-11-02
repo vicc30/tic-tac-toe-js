@@ -10,8 +10,17 @@ const gameInit = (() => {
             gameBoardContainer.append(square);
         }
     };
+
+    const gameOver = () => {
+        for (let i = 1; i <= boardSize * boardSize; i++) {
+            const square = document.getElementById(i);
+            square.removeAttribute("onclick", `gameBoard.playMove(this.id)`);
+        }
+    }
+
     return {
-        createBoard
+        createBoard,
+        gameOver
     }
 })();
 
@@ -40,15 +49,22 @@ const gameBoard = (() => {
             ["1", "5", "9"],
             ["3", "5", "7"]
         ];
+        //where is going to add winner or draw line in HTML body
+        const winnerP = document.getElementById('winner');
 
-        winMoves.forEach((winLine) => {
-            const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
-            if (winMove.length === 3) {
-                console.log('win: ' + winLine);
-                const winner = document.getElementById('winner');
-                winner.append(`winner is: ${nextMove}`);
-            }
-        });
+        if (squares.length === 5) {
+            winnerP.append("It is a draw");
+            gameInit.gameOver();
+        } else {
+            winMoves.forEach((winLine) => {
+                const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
+                if (winMove.length === 3) {
+                    console.log('win: ' + winLine);
+                    winnerP.append(`winner is: ${nextMove}`);
+                    gameInit.gameOver();
+                }
+            });
+        }
     }
 
     const playMove = (square) => {
@@ -74,9 +90,6 @@ const gameBoard = (() => {
             }
         } else {
             alert('Space is taken, select other move!');
-        }
-        return {
-            nextMove
         }
     };
     return {
