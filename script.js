@@ -16,14 +16,42 @@ const gameInit = (() => {
 })();
 
 const gameBoard = (() => {
+
     let selection = '';
+    let nextMove = '';
+
     const selected = (select) => {
         selection = select;
     };
-    const xMoves = [];
-    const oMoves = [];
+
+    const moves = {
+        xMoves: [],
+        oMoves: []
+    };
+
+    const calculateWinner = (squares) => {
+        const winMoves = [
+            ["1", "2", "3"],
+            ["4", "5", "6"],
+            ["7", "8", "9"],
+            ["1", "4", "7"],
+            ["2", "5", "8"],
+            ["3", "6", "9"],
+            ["1", "5", "9"],
+            ["3", "5", "7"]
+        ];
+
+        winMoves.forEach((winLine) => {
+            const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
+            if (winMove.length === 3) {
+                console.log('win: ' + winLine);
+                const winner = document.getElementById('winner');
+                winner.append(`winner is: ${nextMove}`);
+            }
+        });
+    }
+
     const playMove = (square) => {
-        let nextMove = '';
         //If no selection starts with X
         selection === '' ? nextMove = 'X' : nextMove = selection;
 
@@ -35,17 +63,20 @@ const gameBoard = (() => {
             const text = document.createTextNode(nextMove);
             play.appendChild(text);
 
-            if(nextMove==='X'){
-                xMoves.push(square);
-                selection='O';
+            if (nextMove === 'X') {
+                moves.xMoves.push(square);
+                calculateWinner(moves.xMoves);
+                selection = 'O';
             } else {
-                oMoves.push(square);
-                selection='X';
+                moves.oMoves.push(square);
+                calculateWinner(moves.oMoves);
+                selection = 'X';
             }
-            console.log('O moves:' + oMoves);
-            console.log('X moves:'+xMoves);
         } else {
-            alert('Select other move');
+            alert('Space is taken, select other move!');
+        }
+        return {
+            nextMove
         }
     };
     return {
