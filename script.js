@@ -50,30 +50,34 @@ const gamePlay = (() => {
             ["1", "5", "9"],
             ["3", "5", "7"]
         ];
+
+        let winDigits = [];
         //where is going to add winner or draw line in HTML body
         const winnerP = document.getElementById('winner');
 
-        if (squares.length === 5) {
-            var node = document.createElement("h3");
-            node.id = "win";
-            var text = document.createTextNode("It is a Draw!");
-            node.appendChild(text);
-            winnerP.appendChild(node);
-            gameBoard.gameOver();
-        } else {
-            winMoves.forEach((winLine) => {
-                const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
-                if (winMove.length === 3) {
-                    console.log('win: ' + winLine);
-                    var node = document.createElement("h3");
-                    node.id = "win";
-                    var text = document.createTextNode(`Winner is: ${nextMove}`);
-                    node.appendChild(text);
-                    winnerP.appendChild(node);
-                    gameBoard.gameOver();
-                }
-            });
-        }
+        winMoves.forEach((winLine) => {
+            const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
+            //continue if a win line matches
+            if (winMove.length === 3) {
+                console.log('win: ' + winLine);
+                winDigits = winLine;
+                var node = document.createElement("h3");
+                node.id = "win";
+                var text = document.createTextNode(`Winner is: ${nextMove}`);
+                node.appendChild(text);
+                winnerP.appendChild(node);
+                gameBoard.gameOver();
+
+                //if none matches and player moves are equal to 5 shows draw
+            } else if (squares.length === 5 && !document.getElementById('win')) {
+                var node = document.createElement("h3");
+                node.id = "win";
+                var text = document.createTextNode("It is a Draw!");
+                node.appendChild(text);
+                winnerP.appendChild(node);
+                gameBoard.gameOver();
+            }
+        });
     }
 
     const playMove = (square) => {
