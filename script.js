@@ -54,14 +54,22 @@ const gamePlay = (() => {
         const winnerP = document.getElementById('winner');
 
         if (squares.length === 5) {
-            winnerP.append("It is a draw");
+            var node = document.createElement("h3");
+            node.id = "win";
+            var text = document.createTextNode("It is a Draw!");
+            node.appendChild(text);
+            winnerP.appendChild(node);
             gameBoard.gameOver();
         } else {
             winMoves.forEach((winLine) => {
                 const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
                 if (winMove.length === 3) {
                     console.log('win: ' + winLine);
-                    winnerP.append(`winner is: ${nextMove}`);
+                    var node = document.createElement("h3");
+                    node.id = "win";
+                    var text = document.createTextNode(`Winner is: ${nextMove}`);
+                    node.appendChild(text);
+                    winnerP.appendChild(node);
                     gameBoard.gameOver();
                 }
             });
@@ -99,12 +107,14 @@ const gamePlay = (() => {
         while (gameBoardContainer.firstChild) {
             gameBoardContainer.removeChild(gameBoardContainer.lastChild);
         }
-        gameBoard.createBoard();
+        const winner = document.getElementById('winner');
+        if (winner) winner.innerText = '';
         selection = '';
         nextMove = '';
         selection = '';
         moves.xMoves = [];
         moves.oMoves = [];
+        gameBoard.createBoard();
     };
 
     return {
