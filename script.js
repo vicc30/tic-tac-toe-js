@@ -1,6 +1,9 @@
 const gameBoard = (() => {
     const boardSize = 3;
 
+    const newGame = () => {
+        
+    }
     const createBoard = () => {
         const gameBoardContainer = document.getElementById('board');
         for (let i = 1; i <= boardSize * boardSize; i++) {
@@ -20,6 +23,7 @@ const gameBoard = (() => {
     };
 
     return {
+        newGame,
         createBoard,
         gameOver
     };
@@ -69,7 +73,7 @@ const gamePlay = (() => {
                 gameBoard.gameOver();
 
                 //if none matches and player moves are equal to 5 shows draw
-            } else if (squares.length === 5 && !document.getElementById('win')) {
+            } else if (squares.length === 5 && winDigits != 3) {
                 var node = document.createElement("h3");
                 node.id = "win";
                 var text = document.createTextNode("It is a Draw!");

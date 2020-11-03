@@ -89,3 +89,23 @@ button {
 .selected {
   color: yellow;
 }
+
+.modal-title {
+  color: blueviolet;
+}
+.modal-content {
+  background: url(./assets/notes.png) no-repeat center center fixed;
+}
+.other-color {
+  color: darkred;
+  font-size: 15px;
+}
+
+.modal-body {
+  color: blueviolet;
+
+}
+
+.highlight {
+  color: darkred;
+}
