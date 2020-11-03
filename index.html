@@ -24,13 +24,18 @@
                         <h4 class="card-title">Instructions</h4>
                         <p class="card-text">Start game o select a player:</p>
                         <div class="row">
-                            <button id="X" class="selection selected" type="button" onclick="gameBoard.selected('X')">
+                            <button id="X" class="selection selected" type="button" onclick="gamePlay.selected('X')">
                                 X First
                             </button>
                         </div>
                         <div class="row">
-                            <button id="O" class="selection" type="button" onclick="gameBoard.selected('O')">
+                            <button id="O" class="selection" type="button" onclick="gamePlay.selected('O')">
                                 O First
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button id="O" type="button" onclick="gamePlay.reset()">
+                                Reset
                             </button>
                         </div>
                         <h4 id="winner"></h4>

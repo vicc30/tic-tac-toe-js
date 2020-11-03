@@ -13,6 +13,11 @@ html body {
   font-family: chalkTastic;
 }
 
+button {
+  background: none;
+  color: white;
+}
+
 .mainHead {
   transform: rotate(-20deg);
   margin-top: 100px;
@@ -78,7 +83,6 @@ html body {
 }
 
 .selection {
-  background: none;
   color: palegreen;
 }
 

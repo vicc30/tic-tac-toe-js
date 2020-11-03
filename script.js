@@ -1,12 +1,13 @@
-const gameInit = (() => {
+const gameBoard = (() => {
     const boardSize = 3;
+
     const createBoard = () => {
         const gameBoardContainer = document.getElementById('board');
         for (let i = 1; i <= boardSize * boardSize; i++) {
             const square = document.createElement('div');
             square.id = `${i}`;
             square.className = 'square';
-            square.setAttribute("onclick", `gameBoard.playMove(this.id)`);
+            square.setAttribute("onclick", `gamePlay.playMove(this.id)`);
             gameBoardContainer.append(square);
         }
     };
@@ -14,17 +15,17 @@ const gameInit = (() => {
     const gameOver = () => {
         for (let i = 1; i <= boardSize * boardSize; i++) {
             const square = document.getElementById(i);
-            square.removeAttribute("onclick", `gameBoard.playMove(this.id)`);
+            square.removeAttribute("onclick", `gamePlay.playMove(this.id)`);
         }
-    }
+    };
 
     return {
         createBoard,
         gameOver
-    }
+    };
 })();
 
-const gameBoard = (() => {
+const gamePlay = (() => {
 
     let selection = '';
     let nextMove = '';
@@ -54,14 +55,14 @@ const gameBoard = (() => {
 
         if (squares.length === 5) {
             winnerP.append("It is a draw");
-            gameInit.gameOver();
+            gameBoard.gameOver();
         } else {
             winMoves.forEach((winLine) => {
                 const winMove = (winLine.filter(item => winLine.includes(item) && squares.includes(item)));
                 if (winMove.length === 3) {
                     console.log('win: ' + winLine);
                     winnerP.append(`winner is: ${nextMove}`);
-                    gameInit.gameOver();
+                    gameBoard.gameOver();
                 }
             });
         }
@@ -92,10 +93,24 @@ const gameBoard = (() => {
             alert('Space is taken, select other move!');
         }
     };
+
+    const reset = () => {
+        const gameBoardContainer = document.getElementById('board');
+        while (gameBoardContainer.firstChild) {
+            gameBoardContainer.removeChild(gameBoardContainer.lastChild);
+        }
+        gameBoard.createBoard();
+        selection = '';
+        nextMove = '';
+        selection = '';
+        moves.xMoves = [];
+        moves.oMoves = [];
+    };
+
     return {
         playMove,
-        selected
-    }
+        reset
+    };
 })();
 
-gameInit.createBoard();
+gameBoard.createBoard();
