@@ -1,3 +1,5 @@
+'use strict';
+
 const gameBoard = (() => {
     const boardSize = 3;
 
@@ -20,10 +22,9 @@ const gameBoard = (() => {
         }
 
 
-        playerX = document.getElementById("myForm").elements[0].value;
-        playerO = document.getElementById("myForm").elements[1].value;
+        var playerX = document.getElementById("myForm").elements[0].value;
+        var playerO = document.getElementById("myForm").elements[1].value;
 
-        console.log(playerX + " " + playerO);
         $('#newGameModal').modal('hide');
         const players = document.getElementById('players');
         //Append Player X name
