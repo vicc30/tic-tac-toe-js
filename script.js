@@ -76,6 +76,7 @@ const gamePlay = (() => {
     let nextMove = '';
 
     const selected = (select) => {
+        reset();
         selection = select;
     };
 
