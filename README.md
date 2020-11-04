@@ -12,3 +12,4 @@ This excercise is part of Odin Project JavaScript Path.
 3. Set up your HTML and write a JavaScript function that will render the contents of the gameboard array to the webpage
 4. Build the functions that allow players to add marks to a specific spot on the board, and then tie it to the DOM, letting players click on the gameboard to place their marker. Don’t forget the logic that keeps players from playing in spots that are already taken!
 5. Build the logic that checks for when the game is over! Should check for 3-in-a-row and a tie.
+6. Clean up the interface to allow players to put in their names, include a button to start/restart the game and add a display element that congratulates the winning player!
