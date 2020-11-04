@@ -5,12 +5,42 @@ const gameBoard = (() => {
         $(window).on('load', function () {
             $('#newGameModal').modal('show');
         });
+        //prevent dismiss when click outside
+        $('#newGameModal').modal({
+            backdrop: 'static',
+            keyboard: false
+        })
     };
+
     const newGame = () => {
-        var playerX = document.getElementById("myForm").elements[0].value;
-        var playerO = document.getElementById("myForm").elements[1].value;
+        //If there is a name already removes it before put a new one
+        const playersRemove = document.getElementById('players')
+        while (playersRemove.firstChild) {
+            playersRemove.removeChild(playersRemove.lastChild);
+        }
+
+
+        playerX = document.getElementById("myForm").elements[0].value;
+        playerO = document.getElementById("myForm").elements[1].value;
+
         console.log(playerX + " " + playerO);
         $('#newGameModal').modal('hide');
+        const players = document.getElementById('players');
+        //Append Player X name
+        const playX = document.createElement('p');
+        playX.id = `${playerX}`;
+        playX.className = 'player'
+        var textX = document.createTextNode(`Move X: ${playerX}`);
+        playX.appendChild(textX);
+        players.append(playX);
+        //Append Player O Name
+        const playO = document.createElement('p');
+        playO.id = `${playerO}`;
+        playO.className = 'player'
+        var textX = document.createTextNode(`Move O: ${playerO}`);
+        playO.appendChild(textX);
+        players.append(playO);
+
         createBoard();
     };
 
@@ -84,7 +114,7 @@ const gamePlay = (() => {
                 gameBoard.gameOver();
 
                 //if none matches and player moves are equal to 5 shows draw
-            } else if (squares.length === 5 && winDigits != 3) {
+            } else if (squares.length === 5 && winDigits != 3 && !document.getElementById("win")) {
                 var node = document.createElement("h3");
                 node.id = "win";
                 var text = document.createTextNode("It is a Draw!");
@@ -138,7 +168,8 @@ const gamePlay = (() => {
 
     return {
         playMove,
-        reset
+        reset,
+        selected
     };
 })();
 
