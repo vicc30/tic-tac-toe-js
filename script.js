@@ -1,9 +1,19 @@
 const gameBoard = (() => {
     const boardSize = 3;
 
+    const onLoad = () => {
+        $(window).on('load', function () {
+            $('#newGameModal').modal('show');
+        });
+    };
     const newGame = () => {
-        
-    }
+        var playerX = document.getElementById("myForm").elements[0].value;
+        var playerO = document.getElementById("myForm").elements[1].value;
+        console.log(playerX + " " + playerO);
+        $('#newGameModal').modal('hide');
+        createBoard();
+    };
+
     const createBoard = () => {
         const gameBoardContainer = document.getElementById('board');
         for (let i = 1; i <= boardSize * boardSize; i++) {
@@ -25,7 +35,8 @@ const gameBoard = (() => {
     return {
         newGame,
         createBoard,
-        gameOver
+        gameOver,
+        onLoad
     };
 })();
 
@@ -131,4 +142,4 @@ const gamePlay = (() => {
     };
 })();
 
-gameBoard.createBoard();
+gameBoard.onLoad();

@@ -94,7 +94,7 @@ button {
   color: blueviolet;
 }
 .modal-content {
-  background: url(./assets/notes.png) no-repeat center center fixed;
+  background: url(./assets/notes.png) repeat center center;
 }
 .other-color {
   color: darkred;
@@ -103,7 +103,8 @@ button {
 
 .modal-body {
   color: blueviolet;
-
+  padding-inline: 2.5px;
+  line-height: 2.7rem;
 }
 
 .highlight {

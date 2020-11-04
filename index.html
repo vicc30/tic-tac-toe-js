@@ -38,9 +38,11 @@
                                 Reset
                             </button>
                         </div>
-                        <button type="button" data-toggle="modal" data-target="#newGameModal">
-                            New Game
-                        </button>
+                        <div class="row">
+                            <button type="button" data-toggle="modal" data-target="#newGameModal">
+                                New Game
+                            </button>
+                        </div>
 
                         <!-- Modal Instructions-->
                         <div class="modal fade" id="newGameModal" tabindex="-1" role="dialog"
@@ -48,25 +50,44 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="newGameModalLabel">Welcome! <span class="other-color"><br>Here are the instructions: </span></h5>
+                                        <h5 class="modal-title" id="newGameModalLabel">Welcome! <span
+                                                class="other-color"><br>Here are the instructions: </span></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <ul>
-                                            <li>Read instructions and press <span class="highlight">Start Game</span> when you are ready.</li>
+                                            <li>Read instructions and press <span class="highlight">Start Game</span>
+                                                when you are ready.</li>
                                             <li><span class="highlight">X</span> goes first</li>
-                                            <li>Fill in the blanks and press <span class="highlight">Start Game</span></li>
-                                            <li>If you want to play again press <span class="highlight">Restart</span> on board</li>
-                                            <li>If you want to change players press <span class="highlight">New Game</span></li>
+                                            <li>Fill in the blanks and press <span class="highlight">Start Game</span>
+                                            </li>
+                                            <li>If you want to play again press <span class="highlight">Restart</span>
+                                                on board</li>
+                                            <li>If you want to change players press <span class="highlight">New
+                                                    Game</span></li>
                                             <li>Enjoy it</li>
                                         </ul>
                                         <p class="mt-5">Thank you for playing!</p>
+                                        <form id="myForm">
+                                            <div class="form-group">
+                                                <label for="nameX" class="other-color">Player X Name:</label>
+                                                <input type="text" class="form-control" id="nameX"
+                                                    placeholder="Type your name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nameO" class="other-color">Payer O Name:</label>
+                                                <input type="text" class="form-control" id="nameO"
+                                                    placeholder="Type your name">
+                                            </div>
+                                        </form>
                                         <p>Made by Victor C.</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary">Next</button>
+                                        <button type="button" class="btn btn-primary"
+                                            onclick="gameBoard.newGame()">Start
+                                            play</button>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +107,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -96,6 +116,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
