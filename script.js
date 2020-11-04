@@ -109,11 +109,11 @@ const gamePlay = (() => {
                 var node = document.createElement("h3");
                 node.id = "win";
                 //conditional to get winner and name
-                if(nextMove==='X'){
+                if (nextMove === 'X') {
                     var playerX = document.getElementById("myForm").elements[0].value;
                     var text = document.createTextNode(`Congrats \ ${playerX} \  Wins!`);
                 } else {
-                    var playerO = document.getElementById("myForm").elements[0].value;
+                    var playerO = document.getElementById("myForm").elements[1].value;
                     var text = document.createTextNode(`Congrats \ ${playerO} \ Wins!`);
                 }
                 node.appendChild(text);
